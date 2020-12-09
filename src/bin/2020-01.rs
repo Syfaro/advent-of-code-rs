@@ -66,12 +66,12 @@ fn find_three_pair(sums_to: i32, nums: &[i32]) -> (i32, i32, i32) {
             // We can't reuse numbers, so filter out any items where we're
             // looking at the same line.
             if idx1 == idx2 {
-                continue
+                continue;
             }
 
             for (idx3, n3) in nums.iter().enumerate() {
                 if idx2 == idx3 {
-                    continue
+                    continue;
                 }
 
                 let sum = n1 + n2 + n3;
