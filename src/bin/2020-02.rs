@@ -131,7 +131,7 @@ mod tests {
         let validation = validate_letter_count(&entry);
         assert_eq!(validation, true);
 
-        let entry: PasswordEntry = "3-12 v: zbvlbpxcrnvvwjpwl".parse().unwrap();
+        let entry: PasswordEntry = "3-12 v: zbvlbpxcrnvwjpwl".parse().unwrap();
         let validation = validate_letter_count(&entry);
         assert_eq!(validation, false);
     }
