@@ -10,3 +10,6 @@ pretty_env_logger = "0.4"
 
 regex = "1"
 lazy_static = "1"
+
+hex = "0.4"
+md5 = "0.7"
