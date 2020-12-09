@@ -1,6 +1,8 @@
 use std::fs;
 use std::sync::Once;
 
+pub mod utils;
+
 static INIT: Once = Once::new();
 
 /// Run some initialization code to make sure everything will work as expected.
