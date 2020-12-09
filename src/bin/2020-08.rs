@@ -75,7 +75,7 @@ fn run_until_duplicate(lines: &[Line]) -> i32 {
         }
         visited.insert(pos);
 
-        let line = lines.get(pos).unwrap();
+        let line = &lines[pos];
         log::trace!("Evaluating line {}: {:?}", pos, line);
 
         match line.instruction {
@@ -113,7 +113,7 @@ fn will_complete(lines: &[Line]) -> (bool, i32) {
         }
         visited.insert(pos);
 
-        let line = lines.get(pos).unwrap();
+        let line = &lines[pos];
         log::trace!("Evaluating line {}: {:?}", pos, line);
 
         match line.instruction {
