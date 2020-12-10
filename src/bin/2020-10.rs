@@ -71,18 +71,23 @@ fn count_paths(jolts: &[usize], pos: usize, mut visited: &mut HashMap<usize, usi
     //   if the difference is less than 3, making it a valid possibility.
     // * Recursively calculating everything for each child and adding together
     //   all of the possibilities.
+    //
+    // We only really need to iterate from `pos + 1` to
+    // `min(pos + 4, jolts.len())` but we'd still need the diff check, so it
+    // would look more complicated and have identical performance.
     let mut paths = 0;
     for index in pos + 1..jolts.len() {
         let diff = jolts[index] - jolts[pos];
 
-        if diff <= 3 {
-            log::trace!("Pos {} to index {} has diff of {}", pos, index, diff);
-            paths += count_paths(&jolts, index, &mut visited);
-        } else {
-            // Because the values are sorted, as soon as we're over a difference
-            // of 3 there are no more valid possibilities.
+        // Because the values are sorted, as soon as we're over a difference of
+        // 3 there are no more valid possibilities.
+        if diff > 3 {
+            log::trace!("No more possibilities from pos {} to index {}", pos, index);
             break;
         }
+
+        log::trace!("Pos {} to index {} has diff of {}", pos, index, diff);
+        paths += count_paths(&jolts, index, &mut visited);
     }
 
     // Record the value so we don't have to recalculate it in the future.
